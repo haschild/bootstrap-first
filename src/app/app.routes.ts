@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 export const appRoutes = [
     {
         path: '',
-        redirectTo: 'homes',
+        redirectTo: 'login',
         pathMatch: 'full'
 
     },
