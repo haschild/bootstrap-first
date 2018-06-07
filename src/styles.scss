@@ -1,5 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 
+.col-12,
+.col-11,
+.col-10,
+.col-9,
+.col-8,
+.col-7,
+.col-6,
+.col-5,
+.col-4,
+.col-3,
+.col-2,
+.col-1 {
+    padding: 0;
+}
+
 .login {
     top: 50px
+}
+
+.header {
+    height: 60px;
+    background: #2a2a2a;
+    color: white;
+}
+
+.menu {
+    padding-right: 2px;
+}
+
+nav.nav {
+    border: 1px solid #cdcdcd;
+    padding: 10px;
+}
+
+nav a.active {
+    border: 1px solid #cdcdcd;
+    border-radius: 3px;
+}
+
+.main .content {
+    padding: 10px;
+    border: 1px solid #cdcdcd;
+}
+
+.line {
+    padding: 5px 1%;
+    width: 99%;
+    border-top: 1px solid #cdcdcd;
 }
