@@ -8,6 +8,9 @@ import { MenuComponent } from '../global-layout/menu/menu.component';
 import { TopComponent } from '../global-layout/top/top.component';
 import { FooterComponent } from '../global-layout/footer/footer.component';
 import { ContentComponent } from '../global-layout/content/content.component';
+
+// show content
+import { ContentModel } from './content.module';
 @NgModule({
   declarations: [
     HomesComponent,
@@ -17,6 +20,7 @@ import { ContentComponent } from '../global-layout/content/content.component';
     ContentComponent
   ],
   imports: [
+    ContentModel,
     RouterModule.forChild(HomesRoutes)
   ],
   providers: [],

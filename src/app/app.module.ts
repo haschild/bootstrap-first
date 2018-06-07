@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { MyPreloadingStrategy } from './common/my-preloading-strategy';
 
+
 @NgModule({
   declarations: [
     AppComponent,
