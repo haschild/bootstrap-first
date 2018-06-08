@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomesComponent } from './homes.component';
 import { HomesRoutes } from './homes.router';
@@ -11,6 +11,7 @@ import { ContentComponent } from '../global-layout/content/content.component';
 
 // show content
 import { ContentModel } from './content.module';
+
 @NgModule({
   declarations: [
     HomesComponent,
@@ -21,7 +22,7 @@ import { ContentModel } from './content.module';
   ],
   imports: [
     ContentModel,
-    RouterModule.forChild(HomesRoutes)
+    RouterModule.forChild(HomesRoutes),
   ],
   providers: [],
 })
