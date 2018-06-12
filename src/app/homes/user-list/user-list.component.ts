@@ -19,9 +19,9 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetch((data => {
+    this.fetch((data) => {
       this.rows = data;
-    })
+    });
   }
 
   fetch(cb) {
@@ -39,7 +39,6 @@ export class UserListComponent implements OnInit {
     });
     // const req = new XMLHttpRequest();
     // req.open('GET', `assets/company.json`);
-
     // req.onload = () => {
     //   cb(JSON.parse(req.response));
     // };
