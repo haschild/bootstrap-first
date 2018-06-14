@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-
+import { FormEvent } from '../../form-validate/form.event';
 
 
 
@@ -16,7 +14,7 @@ export class UserDetailComponent implements OnInit {
   protected aaa: string;
   constructor() { }
   arr = Observable.of(1, 2, 3);
-  ESC_KEY = 27;
+
 
   myObserver = {
     next: x => console.log('Observer got a next value: ' + x),
@@ -24,30 +22,28 @@ export class UserDetailComponent implements OnInit {
     complete: () => console.log('Observer got a complete notification'),
   };
 
-  formEvent(eventName: string, target: HTMLInputElement) {
-    return new Observable((observable => {
-    const fun = (e) => observable.next(e);
-    target.addEventListener(eventName, fun);
 
-    return () => {
-      target.removeEventListener(eventName, fun);
-    };
-  }));
-}
 
-ngOnInit() {
-  this.arr.subscribe(this.myObserver);
+  ngOnInit() {
+    this.arr.subscribe(this.myObserver);
 
-  const target = document.getElementById('name') as HTMLInputElement;
-  const str = this.formEvent('keydown', target )
-    .subscribe((e: KeyboardEvent) => {
-      if (e.keyCode === this.ESC_KEY) {
-        target.value = '';
-      }
-    });
+    this.clearInput();
 
+
+  }
+
+// 点击 esc 清除 Input 的数据
+  clearInput() {
+    const ESC_KEY = 27;
+    const target = document.getElementById('name') as HTMLInputElement;
+    const str = FormEvent.addlistener('keydown', target)
+      .subscribe((e: KeyboardEvent) => {
+        if (e.keyCode === ESC_KEY) {
+          target.value = '';
+        }
+      });
     console.log(str);
-}
+  }
 
 }
 

@@ -1,6 +1,13 @@
 // 该 ts 仅仅拿来测试使用。
 
-// let arr = ['ab', 'bc', 'cd'];
+let arr = ['ab', 'bc', 'cd'];
+let arrNum = [1, 2, 3, 4, 5, 6];
+let obj = {
+    name: '张三',
+    age: 50,
+    phone: '123456761512',
+    address: '川渝重庆市'
+};
 
 // function fun(val) {
 //     return /[a]+/g.test(val);
@@ -29,11 +36,11 @@
 
 // }
 
-var it = makeIterator(['a', 'b']);
+let it = makeIterator(['a', 'b']);
 
-it.next() // { value: "a", done: false }
-it.next() // { value: "b", done: false }
-it.next() // { value: undefined, done: true }
+it.next(); // { value: "a", done: false }
+it.next(); // { value: "b", done: false }
+it.next(); // { value: undefined, done: true }
 
 function makeIterator(array) {
     let nextIndex = 0;
@@ -45,3 +52,16 @@ function makeIterator(array) {
         }
     };
 }
+
+const map = new Map();
+let para = ['a'];
+map.set(para, 555);
+// console.log(map.get(para));
+
+// arrNUm.name='sss';
+
+// Object.values(obj).forEach((val) => { console.log(val) });
+
+// for (let i of Object.values(obj)){
+//     console.log(i);
+// };
