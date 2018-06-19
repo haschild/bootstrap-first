@@ -1,6 +1,8 @@
 // 定义用户
 export class User {
+   id: number;
    name: string;
-   password: string;
-   email: string;
+   age?: number;
+   password?: string;
+   email?: string;
 };

@@ -3,7 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { Router } from '@angular/router';
 declare let $: any;
+
+
+import { UserService } from '../user-service.';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -14,14 +18,27 @@ export class UserListComponent implements OnInit {
 
   editing = {};
   rows = [];
-
-  constructor() {
+  selected = [];
+  columns: any[] = [
+    { prop: 'name' },
+    { name: 'id' },
+  ];
+  constructor(private userService: UserService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.fetch((data) => {
-      this.rows = data;
-    });
+    // this.fetch((data) => {  直接通过 js 代码获取 js 文件数据
+    //   this.rows = data;
+    // });
+   this.getUsers();
+  }
+
+  getUsers() {
+     this.userService.getUsers()
+      .subscribe((users) => {
+       this.rows  = users;
+      });
   }
 
   fetch(cb) {
@@ -37,23 +54,19 @@ export class UserListComponent implements OnInit {
         alert(message);
       }
     });
-    // const req = new XMLHttpRequest();
-    // req.open('GET', `assets/company.json`);
-    // req.onload = () => {
-    //   cb(JSON.parse(req.response));
-    // };
-
-    // req.send();
   }
 
-  updateValue(event, cell, rowIndex) {
-    console.log('inline editing rowIndex', rowIndex);
-    this.editing[rowIndex + '-' + cell] = false;
-    this.rows[rowIndex][cell] = event.target.value;
-    this.rows = [...this.rows];
-    console.log('UPDATED!', this.rows[rowIndex][cell]);
+
+  onSelect({ selected }) {
+
+    this.router.navigate(['/homes/userDetail/' + selected[0].id]);
+    console.log('Select Event', selected, this.selected);
   }
 
+  onActivate(event) {
+    // 当滑动的时候就会执行该事件。
+    // console.log('Activate Event', event);
+  }
 
 
 }

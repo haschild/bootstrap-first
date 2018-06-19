@@ -1,5 +1,7 @@
-<p>
-    姓名：<input type="text" name="name" id="name" value="王麻子">
-</p>
-<p>真是欲哭无泪， const fun = (e) => observable.next(e); 就因为这句代码，坑了很久。 如果你想在 subscribe 中获取传递过来的参数，请在 next 中传递值啊。。就是眼睛不好。
-</p>
+<form *ngIf="user">
+    <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" disabled id='name' name="name" [(ngModel)]='user.name' class="form-control">
+    </div>
+    <button type="submit" (click)="goBack()" class="btn btn-primary">返回</button>
+</form>

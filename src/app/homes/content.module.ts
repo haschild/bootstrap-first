@@ -1,18 +1,33 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule } from '@angular/forms';
+
+// 因为用 http 获取数据
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// 模拟的数据
+import { UserData } from '../mock-data/user.data';
+import { UserService } from './user-service.';
+
 @NgModule({
   declarations: [
     UserListComponent,
     UserDetailComponent
   ],
   imports: [
-    NgxDatatableModule, CommonModule
+    FormsModule,
+    NgxDatatableModule,
+    CommonModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      UserData, { dataEncapsulation: false }
+    )
+
+
   ],
-  providers: [],
+  providers: [UserService],
 })
 export class ContentModel { }
