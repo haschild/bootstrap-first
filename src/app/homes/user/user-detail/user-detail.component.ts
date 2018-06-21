@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { FormEvent } from '../../form-validate/form.event';
+import { FormEvent } from '../../../form-validate/form.event';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../user-service.';
 
-import { User } from '../../mock-data/user';
-
+import { User } from '../../../mock-data/user';
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',

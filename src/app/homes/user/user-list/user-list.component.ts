@@ -4,8 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Router } from '@angular/router';
-declare let $: any;
-
 
 import { UserService } from '../user-service.';
 @Component({
@@ -31,13 +29,13 @@ export class UserListComponent implements OnInit {
     // this.fetch((data) => {  直接通过 js 代码获取 js 文件数据
     //   this.rows = data;
     // });
-   this.getUsers();
+    this.getUsers();
   }
 
   getUsers() {
-     this.userService.getUsers()
+    this.userService.getUsers()
       .subscribe((users) => {
-       this.rows  = users;
+        this.rows = users;
       });
   }
 
@@ -61,6 +59,11 @@ export class UserListComponent implements OnInit {
 
     this.router.navigate(['/homes/userDetail/' + selected[0].id]);
     console.log('Select Event', selected, this.selected);
+  }
+
+  // 新增用戶
+  redirectAdd() {
+    this.router.navigate(['/homes/userAdd/']);
   }
 
   onActivate(event) {

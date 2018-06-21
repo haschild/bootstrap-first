@@ -1,9 +1,9 @@
 <div>
     <h3>
-
         <small>
         用户列表 
     </small>
+        <a class="btn btn-primary" routerLink='homes/userAdd' (click)='redirectAdd()'>添加</a>
     </h3>
     <ngx-datatable #mydatatable class="material" [headerHeight]="50" [limit]="5" [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'" [rows]="rows" [selected]="selected" [selectionType]="'single'" (activate)="onActivate($event)" (select)='onSelect($event)'>>
         <ngx-datatable-column name="序号" width="80">

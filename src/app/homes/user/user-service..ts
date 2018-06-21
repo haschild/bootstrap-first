@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 
 
 
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpUserEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 // http error catch
 import { catchError, map, tap } from 'rxjs/operators';
-import { User } from '../mock-data/user';
+import { User } from '../../mock-data/user';
 // set HttpHeaders
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,13 +16,17 @@ const httpOptions = {
 @Injectable()
 export class UserService {
   private userUrl = 'api/users';
-  private userDetail = 'api/userDetail';
+  users: User[];
   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
+   *
+   * 这里讲解下<T> 该类型也泛指任意的类型，
+   * 但是在改方法被调用的时候，类型就被确定了，不能更改了。
    */
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
@@ -43,7 +47,6 @@ export class UserService {
   }
   constructor(private httpClient: HttpClient) { }
 
-
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.userUrl)
       .pipe( // 管道里可以捕获异常
@@ -59,6 +62,16 @@ export class UserService {
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<User>(`getHeroeById id=${id}`))
     );
+  }
+  add(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.userUrl, user, httpOptions).pipe(
+      tap((user: User) => this.log(`added hero w/ id=${user.id}`)),
+      catchError(this.handleError<User>('add'))
+    );
+  }
+
+  updateUserList(users: [User]) {
+    this.users = users;
   }
 
 }

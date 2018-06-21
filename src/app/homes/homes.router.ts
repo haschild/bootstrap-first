@@ -1,7 +1,8 @@
 import { HomesComponent } from './homes.component';
 import { Routes} from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
 export const HomesRoutes: Routes = [
     {
         path: '',
@@ -20,8 +21,12 @@ export const HomesRoutes: Routes = [
             {
                 path: 'userDetail/:id',
                 component: UserDetailComponent
+            }, {
+                path: 'userAdd',
+                component: UserAddComponent
             }
+
         ]
-    },
+    }
 
 ];

@@ -8,9 +8,9 @@ import { MenuComponent } from '../global-layout/menu/menu.component';
 import { TopComponent } from '../global-layout/top/top.component';
 import { FooterComponent } from '../global-layout/footer/footer.component';
 import { ContentComponent } from '../global-layout/content/content.component';
-
 // show content
 import { ContentModel } from './content.module';
+import { UserAddComponent } from './user/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { ContentModel } from './content.module';
     MenuComponent,
     TopComponent,
     FooterComponent,
-    ContentComponent
+    ContentComponent,
+    UserAddComponent
   ],
   imports: [
     ContentModel,

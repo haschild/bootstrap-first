@@ -1,0 +1,8 @@
+<form>
+    <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" #name id='name' name="name" class="form-control">
+    </div>
+    <button class="btn btn-primary" (click)="add(name.value)">添加</button>
+    <button type="submit" (click)="goBack()" class="btn btn-default">返回</button>
+</form>
