@@ -3,6 +3,7 @@ import { Routes} from '@angular/router';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserAddComponent } from './user/user-add/user-add.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
 export const HomesRoutes: Routes = [
     {
         path: '',
@@ -24,6 +25,9 @@ export const HomesRoutes: Routes = [
             }, {
                 path: 'userAdd',
                 component: UserAddComponent
+            }, {
+                path: 'userUpdate/:id',
+                component: UserUpdateComponent
             }
 
         ]

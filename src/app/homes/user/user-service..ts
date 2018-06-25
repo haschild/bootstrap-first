@@ -65,9 +65,18 @@ export class UserService {
   }
   add(user: User): Observable<User> {
     return this.httpClient.post<User>(this.userUrl, user, httpOptions).pipe(
-      tap((user: User) => this.log(`added hero w/ id=${user.id}`)),
+      tap((user: User) => this.log(`added user w/ id=${user.id}`)),
       catchError(this.handleError<User>('add'))
     );
+  }
+
+  // put 提供三个选项 url地址，修改项，选项（包含数据的请求类型）
+  updateUser(user: User): Observable<any> {
+    return this.httpClient.put(this.userUrl, user, httpOptions)
+      .pipe(
+        tap(_ => this.log(`updated hero id=${user.id}`)),
+        catchError(this.handleError<any>('updateUser'))
+      );
   }
 
   updateUserList(users: [User]) {

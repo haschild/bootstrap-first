@@ -17,5 +17,10 @@
                 {{value}}
             </ng-template>
         </ngx-datatable-column>
+        <ngx-datatable-column name="id">
+            <ng-template ngx-datatable-cell-template let-value="value">
+                <button type="button" class="btn btn-primary" (click)="redirectUpdate(value)">修改</button>
+            </ng-template>
+        </ngx-datatable-column>
     </ngx-datatable>
 </div>

@@ -10,7 +10,6 @@ import { FooterComponent } from '../global-layout/footer/footer.component';
 import { ContentComponent } from '../global-layout/content/content.component';
 // show content
 import { ContentModel } from './content.module';
-import { UserAddComponent } from './user/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { UserAddComponent } from './user/user-add/user-add.component';
     TopComponent,
     FooterComponent,
     ContentComponent,
-    UserAddComponent
   ],
   imports: [
     ContentModel,

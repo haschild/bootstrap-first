@@ -63,7 +63,11 @@ export class UserListComponent implements OnInit {
 
   // 新增用戶
   redirectAdd() {
-    this.router.navigate(['/homes/userAdd/']);
+    this.router.navigate(['/homes/userAdd']);
+  }
+  // 跳转到修改界面
+  redirectUpdate(id: any) {
+    this.router.navigate(['/homes/userUpdate/' + id]);
   }
 
   onActivate(event) {
