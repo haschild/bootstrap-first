@@ -3,6 +3,9 @@ import { UserService } from '../user-service.';
 import { User } from '../../../mock-data/user';
 import { Location } from '@angular/common';
 import { FormEvent } from '../../../form-validate/form.event';
+// 添加校验
+import { CustomValidators } from '../../../form-validate/form.validate';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',
@@ -11,14 +14,20 @@ import { FormEvent } from '../../../form-validate/form.event';
 export class UserAddComponent implements OnInit {
   public users: User[];
   constructor(private userService: UserService,
-    private location: Location) { }
-
+    private location: Location,
+    private fb: FormBuilder) { }
+  // formGroup
+  userGroup: FormGroup;
   ngOnInit() {
     // users 变量赋值
     this.userService.getUsers().subscribe( users => this.users = users);
+    this.createGroup();
     console.log(this.users);
   }
   add(name: string) {
+    if (!this.userGroup.valid) {
+      return false;
+    }
     name = name.trim();
     const id: number = Math.floor(Math.random() * 10);
     if (!name) { return; }
@@ -36,6 +45,12 @@ export class UserAddComponent implements OnInit {
     this.location.back();
   }
 
+
+  createGroup() {
+    this.userGroup = this.fb.group({
+      name: ['', [Validators.required, CustomValidators.validatorName(null)]],
+    });
+  }
   // 点击 esc 清除 Input 的数据
   clearInput() {
     const ESC_KEY = 27;

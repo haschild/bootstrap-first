@@ -30,7 +30,6 @@ private location: Location) { }
   // 修改用户
   update() {
     this.userService.updateUser(this.user).subscribe(() => this.location.back());
-
   }
   // 点击 esc 清除 Input 的数据
   clearInput() {
@@ -44,5 +43,9 @@ private location: Location) { }
         }
       });
     console.log(str);
+  }
+
+  goBack(){
+    this.location.back();
   }
 }

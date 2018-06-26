@@ -12,12 +12,12 @@
             </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column name="name">
+        <ngx-datatable-column name="姓名" prop="name">
             <ng-template ngx-datatable-cell-template let-value="value">
                 {{value}}
             </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="id">
+        <ngx-datatable-column name="操作" prop="id">
             <ng-template ngx-datatable-cell-template let-value="value">
                 <button type="button" class="btn btn-primary" (click)="redirectUpdate(value)">修改</button>
             </ng-template>

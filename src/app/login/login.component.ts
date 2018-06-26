@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     if (this.userGroup.valid) {
       this.router.navigate(['/homes']);
     } else {
-      alert('请真确填写');
+      alert('请正确填写');
     }
   }
   createGroup() {

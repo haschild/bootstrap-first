@@ -1,7 +1,15 @@
-<form>
+<form [formGroup]='userGroup'>
     <div class="form-group">
         <label for="name">姓名</label>
-        <input type="text" #name id='name' name="name" class="form-control">
+        <input type="text" formControlName="name" #name id='name' name="name" class="form-control">
+    </div>
+    <div *ngIf="userGroup.get('name').invalid && (userGroup.get('name').dirty ||userGroup.get('name').touched)" class="alert alert-danger">
+        <div *ngIf="userGroup.get('name').hasError('required')">
+            姓名不能为空.
+        </div>
+        <div *ngIf="userGroup.get('name').hasError('validatorName')">
+            姓名格式不正确.
+        </div>
     </div>
     <button class="btn btn-primary" (click)="add(name.value)">添加</button>
     <button type="submit" (click)="goBack()" class="btn btn-default">返回</button>
