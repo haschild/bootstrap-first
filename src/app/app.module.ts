@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { MyPreloadingStrategy } from './common/my-preloading-strategy';
+import { UserSharedModule } from './shared/user.shared.module';
 // ngx-datatable
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MyPreloadingStrategy } from './common/my-preloading-strategy';
     BrowserModule,
     // appRoutes,
     // 当加载的时候，会把路由相关所有的模块都预加载进来。
+    UserSharedModule,
    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
 
     // 不采用预加载的方式

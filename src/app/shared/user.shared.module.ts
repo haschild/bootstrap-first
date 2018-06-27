@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { UserInfoComponent } from '../user-info/user-info.component';
+import { BorderColorDirective } from './validator/border-color.directive';
 
 @NgModule({
     declarations: [
-        UserInfoComponent
+        UserInfoComponent,
+        BorderColorDirective // 表单校验
     ],
     imports: [
         // BrowserModule,

@@ -20,9 +20,29 @@ export class UserAddComponent implements OnInit {
   userGroup: FormGroup;
   ngOnInit() {
     // users 变量赋值
-    this.userService.getUsers().subscribe( users => this.users = users);
+    this.userService.getUsers().subscribe(users => this.users = users);
     this.createGroup();
     console.log(this.users);
+  }
+  // 通过 ngForm 获取数据
+  onSubmit(form: any) {
+    const valid = form.valid;
+    const name = form.value.name;
+    if (valid) {
+      this.add(name);
+    }
+  }
+  setClass(str: string): string {
+    const nameVa = this.userGroup.get(str);
+    const dirty = nameVa.dirty;
+    const touched = nameVa.touched;
+    const invalid = nameVa.invalid;
+    if (invalid && (dirty || touched)) {
+      return 'is-invalid';
+    } else {
+      return '';
+    }
+
   }
   add(name: string) {
     if (!this.userGroup.valid) {
@@ -34,7 +54,7 @@ export class UserAddComponent implements OnInit {
     // 会自动将id 的值增加
     // this.heroService.addHero({ name: name, id: id} as Hero)
     // as 在 typeScript 可以强制转换类型
-    this.userService.add({ name: name} as User)
+    this.userService.add({ name: name } as User)
       .subscribe((user) => {
         this.users.unshift(user);
         this.location.back();
@@ -49,6 +69,7 @@ export class UserAddComponent implements OnInit {
   createGroup() {
     this.userGroup = this.fb.group({
       name: ['', [Validators.required, CustomValidators.validatorName(null)]],
+      id: ['', [Validators.required, Validators.minLength(6), CustomValidators.isNumber()],
     });
   }
   // 点击 esc 清除 Input 的数据

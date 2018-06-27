@@ -1,5 +1,5 @@
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { AbstractControl,  Validator, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, Validator, ValidatorFn, Validators } from '@angular/forms';
 
 export class CustomValidators {
   // form 表单验证
@@ -14,20 +14,36 @@ export class CustomValidators {
   /* 校验密码必须由数字和密码组成 */
   static validatorPassword(nameRe: RegExp): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
+      if (!control.value.trim()) {
+        return null;
+      }
       const forbidden = !nameRe.test(control.value);
       return forbidden ? { 'validatorPassword': false } : null;
     };
   }
-  // 校验中文名称
-   static validatorName(nameRe: RegExp): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } => {
-  if (!nameRe) {
-    nameRe = /([\u4e00-\u9fa5]{2,5})|([a-zA-Z]+[\.a-zA-Z].)/;
+  static isNumber() {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (typeof control.value === 'string' && !control.value.trim()) {
+        return null;
+      }
+      const forbidden = !(/^\d+$/.test(control.value));
+      return forbidden ? { 'isNumber': true } : null;
+    };
   }
-    const forbidden = !nameRe.test(control.value);
-    return forbidden ? { 'validatorName': true } : null;
-  };
-}
+  // 校验中文名称
+  static validatorName(nameRe: RegExp): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (!nameRe) {
+        nameRe = /([\u4e00-\u9fa5]{2,5})|([a-zA-Z]+[\.a-zA-Z].)/;
+      }
+      // 排除姓名为空的情况。
+      if (!control.value.trim()) {
+        return null;
+      }
+      const forbidden = !nameRe.test(control.value);
+      return forbidden ? { 'validatorName': true } : null;
+    };
+  }
 }
 
 export function validatorStr(nameRe: RegExp): ValidatorFn {

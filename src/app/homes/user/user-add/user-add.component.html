@@ -1,16 +1,45 @@
-<form [formGroup]='userGroup'>
+<form [formGroup]='userGroup' #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
     <div class="form-group">
-        <label for="name">姓名</label>
-        <input type="text" formControlName="name" #name id='name' name="name" class="form-control">
+        <div class="col-md-4 mb-3">
+            <label for="name">姓名</label>
+            <input type="text" formControlName="name" id='name' name="name" [ngClass]="setClass('name')" class="form-control">
+            <div class="invalid-tooltip">
+                <span *ngIf="userGroup.get('name').hasError('required')">
+                    姓名不能为空.
+                </span>
+                <span *ngIf="userGroup.get('name').hasError('validatorName')">
+                    姓名格式不正确.
+                </span>
+            </div>
+        </div>
     </div>
-    <div *ngIf="userGroup.get('name').invalid && (userGroup.get('name').dirty ||userGroup.get('name').touched)" class="alert alert-danger">
+
+    <div class="form-group">
+        <div class="col-md-4 mb-3">
+            <label for="id">序号</label>
+            <input type="text" formControlName="id" id='id' name="id" [ngClass]="setClass('id')" class="form-control">
+            <div class="invalid-tooltip">
+                <span *ngIf="userGroup.get('id').hasError('required')">
+                     序号不能为空。
+               </span>
+                <span *ngIf="userGroup.get('id').hasError('minlength')">
+                    数字长度不能小于6
+                </span>
+                <span *ngIf="userGroup.get('id').hasError('isNumber')">
+                只能输入数字
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div *ngIf="userGroup.get('name').invalid && (userGroup.get('name').dirty ||userGroup.get('name').touched)" class="alert alert-danger">
         <div *ngIf="userGroup.get('name').hasError('required')">
             姓名不能为空.
         </div>
         <div *ngIf="userGroup.get('name').hasError('validatorName')">
             姓名格式不正确.
         </div>
-    </div>
-    <button class="btn btn-primary" (click)="add(name.value)">添加</button>
+    </div> -->
+    <button class="btn btn-primary" type="submit">添加</button>
     <button type="submit" (click)="goBack()" class="btn btn-default">返回</button>
 </form>
