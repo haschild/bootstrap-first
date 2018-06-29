@@ -69,7 +69,7 @@ export class UserAddComponent implements OnInit {
   createGroup() {
     this.userGroup = this.fb.group({
       name: ['', [Validators.required, CustomValidators.validatorName(null)]],
-      id: ['', [Validators.required, Validators.minLength(6), CustomValidators.isNumber()],
+      id: ['', [Validators.required, Validators.minLength(6), CustomValidators.isNumber()]],
     });
   }
   // 点击 esc 清除 Input 的数据

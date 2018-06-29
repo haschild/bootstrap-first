@@ -5,7 +5,7 @@ import { Directive, Input, ElementRef, OnInit } from '@angular/core';
 })
 export class BorderColorDirective implements OnInit {
   @Input() appBorderColor: boolean;
-  constructor(private el: ElementRef) { }
+  constructor() { }
 
   ngOnInit() {
   //  this.el.nativeElement
@@ -13,5 +13,3 @@ export class BorderColorDirective implements OnInit {
 
   }
 
-
-}
