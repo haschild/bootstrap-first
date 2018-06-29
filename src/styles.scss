@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 // @import "../node_modules/zui/dist/css/zui.css"; 这种方式直接导入其它依赖的css
+// @import './assets/css/font-awesome.min.css';
+* {
+    padding: 0;
+    margin: 0;
+}
+
 .col-12,
 .col-11,
 .col-10,
@@ -22,22 +28,8 @@
 
 .header {
     height: 60px;
-    background: #2a2a2a;
+    background: #231f20;
     color: white;
-}
-
-.menu {
-    padding-right: 2px;
-}
-
-nav.nav {
-    border: 1px solid #cdcdcd;
-    padding: 10px;
-}
-
-nav a.active {
-    border: 1px solid #cdcdcd;
-    border-radius: 3px;
 }
 
 .main .content {
