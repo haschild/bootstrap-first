@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 // @import "../node_modules/zui/dist/css/zui.css"; 这种方式直接导入其它依赖的css
-// @import './assets/css/font-awesome.min.css';
+@import '~@fortawesome/fontawesome-free/css/fontawesome.css';
+@import '~@fortawesome/fontawesome-free/css/solid.css';
 * {
     padding: 0;
     margin: 0;

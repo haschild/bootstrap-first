@@ -11,6 +11,8 @@ import { ContentComponent } from '../global-layout/content/content.component';
 // show content
 import { ContentModel } from './content.module';
 
+// 字体图标
+
 @NgModule({
   declarations: [
     HomesComponent,
